@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../vue.js" type="text/javascript"></script>
+<div id="app">
+    <cpn2></cpn2>
+</div>
+
+<script type="text/javascript">
+
+    const cpn1={
+        template:`
+        <div>
+            <h1>我是子组件</h1>
+            <p>我是子组件的内容</p>
+            <p>我是子组件的内容</p>
+        </div>`
+    }
+
+    const cpn2={
+        template: `
+        <div>
+            <h1>我是父组件</h1>
+            <p>我是子组件的内容</p>
+            <p>我是子组件的内容</p>
+            <cpn1></cpn1>
+        </div>`,
+        components:{
+            cpn1
+        }
+    }
+
+    var app = new Vue({
+        el: "#app",
+        data: {
+            message: "assas"
+        },
+        components: {
+            cpn2
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../vue.js" type="text/javascript"></script>
+<div id="app">
+    <div @click:stop="divClick">
+        <span>ncsjnaocnsoin saoincionasoi</span>
+        <button @click.stop="btnClick">按钮点击事件</button>
+    </div>
+</div>
+
+
+<!--click stop 阻止冒泡排序-->
+<script type="text/javascript">
+    var app = new Vue({
+        el: "#app",
+        data: {
+            message: "assas"
+        },
+        methods: {
+            btnClick() {
+                console.log('btnClick');
+            },
+            divClick() {
+                console.log('divClick');
+            }
+        }
+    })
+</script>
+</body>
+</html>

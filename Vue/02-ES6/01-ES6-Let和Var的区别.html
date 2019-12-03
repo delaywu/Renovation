@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--
+var 是没有变量作用域
+let 有变量作用域
+-->
+
+<button>按钮1</button>
+<button>按钮2</button>
+<button>按钮3</button>
+<button>按钮4</button>
+<button>按钮5</button>
+
+<script>
+    var btns = document.getElementsByTagName("button")
+    // for (var i = 0; i < btns.length; i++) {
+    //     (function (i) {
+    //         btns[i].addEventListener('click', function () {
+    //             console.log(i)
+    //         });
+    //     })(i)
+    // }
+    for (let i = 0; i < btns.length; i++) {
+        btns[i].addEventListener('click', function () {
+            console.log(i)
+        });
+    }
+</script>
+</body>
+</html>

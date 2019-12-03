@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../vue.js" type="text/javascript"></script>
+<div id="app">
+    {{message}}
+    <cpn :cmessage="message" :cmovies="movies" @item-click="change"></cpn>
+</div>
+
+<template id="cpn">
+    <div>
+        <h1>我是子组件</h1>
+        <p>我是子组件内容</p>
+        <p>我的姓名是:{{name}},我的年龄是:{{age}}</p>
+        <p>父组件的内容是:{{cmessage}}</p>
+
+        <button v-for="item in cmovies" @click="btnClick(item)">{{item}}</button>
+
+    </div>
+</template>
+
+<script type="text/javascript">
+
+    const cpn = {
+        template: "#cpn",
+        props:{
+            cmessage:{
+                type:String,
+                default:""
+            },
+            cmovies:{
+                type: Array,
+                default(){
+                    return []
+                },
+                required:true
+            }
+        },
+        data(){
+            return{
+                name:"wuyue",
+                age:23
+            }
+        },
+        methods:{
+            btnClick(item){
+                this.$emit('item-click',item)
+            }
+        }
+    }
+
+    var app = new Vue({
+        el: "#app",
+        data: {
+            message: "assas",
+            movies:["七龙珠","上海滩","海贼王","CCTV"]
+        },
+        components: {
+            cpn
+        },
+        methods:{
+            change(item){
+               this.message=item
+            }
+        }
+    })
+</script>
+</body>
+</html>

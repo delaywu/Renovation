@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../vue.js" type="text/javascript"></script>
+<div id="app">
+    <button @click="btnClick(1,$event)">按钮</button>
+</div>
+
+<script type="text/javascript">
+    var app = new Vue({
+        el: "#app",
+        data: {
+            message: "assas"
+        },
+        methods: {
+            btnClick(that, event) {
+                console.log(event)
+            }
+        }
+    })
+</script>
+</body>
+</html>

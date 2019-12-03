@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../vue.js" type="text/javascript"></script>
+<div id="app">
+    <h2 v-if="age>27">中年</h2>
+    <h2 v-else>青年</h2>
+    <h1 v-show="ok">Hello!</h1>
+</div>
+
+<script type="text/javascript">
+    var app = new Vue({
+        el: "#app",
+        data: {
+            message: "assas",
+            age: 27,
+            ok:true
+        }
+    })
+</script>
+</body>
+</html>

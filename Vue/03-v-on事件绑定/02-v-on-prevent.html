@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--阻止本身事件的-->
+
+<script src="../vue.js" type="text/javascript"></script>
+<div id="app">
+    <form action="02-v-on-prevent.html">
+        <input type="submit" @click.prevent="submit" value="tijiao">
+    </form>
+</div>
+
+<script type="text/javascript">
+    var app = new Vue({
+        el: "#app",
+        data: {
+            message: "assas"
+        },
+        methods:{
+            submit(){
+                console.log("log");
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../vue.js" type="text/javascript"></script>
+<div id="app">
+    <cpn></cpn>
+</div>
+
+<template id="cpn">
+    <div>
+        <h1>我是标题</h1>
+        <p>我是内容{{name}}</p>
+    </div>
+</template>
+
+
+
+<script type="text/javascript">
+
+    const cpn={
+        template:"#cpn",
+        data(){
+            return {
+                name:"wuyue"
+            }
+        }
+
+    }
+
+    var app = new Vue({
+        el: "#app",
+        data: {
+            message: "assas"
+        },
+        components:{
+            cpn
+        }
+    })
+</script>
+</body>
+</html>

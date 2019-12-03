@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../vue.js" type="text/javascript"></script>
+<div id="app">
+    <cpn :cmovies="movies" @item-click="itemClick"></cpn>
+</div>
+
+<template id="cpn">
+    <div>
+        <h1>我是子组件</h1>
+
+        <button v-for="(item,index) in cmovies" @click="btnClick(item)">{{item}}</button>
+    </div>
+</template>
+
+<script type="text/javascript">
+
+    const cpn={
+        template:"#cpn",
+        props:{
+            cmovies:{
+                type:Array,
+                default(){
+                    return []
+                },
+                required:true
+            }
+        },
+        methods:{
+            btnClick(item){
+                this.$emit('item-click',item)
+            }
+        }
+    }
+
+    var app = new Vue({
+        el: "#app",
+        data: {
+            message: "assas",
+            movies:["海贼王","上海滩","七龙珠"]
+        },
+        components:{
+            cpn
+        },
+        methods:{
+            itemClick(item){
+                console.log(item);
+            }
+        }
+    })
+</script>
+</body>
+</html>

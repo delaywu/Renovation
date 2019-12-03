@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style type="text/css">
+        .active{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<script src="../vue.js" type="text/javascript"></script>
+<div id="app">
+    <cpn :msg="message" :movies="movies" @li-click="liclick"></cpn>
+</div>
+
+<template id="cpn">
+    <div>
+        <h2>我是标题</h2>
+        <p>{{name}}</p>
+        <p>{{msg}}</p>
+
+        <ul>
+            <li v-for="(item,index) in movies"  :class="{active:currentindex==index}" @click="liclick(index,item)">{{item}}</li>
+        </ul>
+    </div>
+</template>
+
+<script type="text/javascript">
+
+    const cpn = {
+        template: "#cpn",
+        props:{
+            msg:{
+                type:String,
+                default:'',
+                required:true
+            },
+            movies:{
+                type: Array,
+                default(){
+                    return []
+                },
+                required: true
+            }
+        },
+        data(){
+            return{
+                name:"delay",
+                currentindex:0
+            }
+        },
+         methods:{
+            liclick(index,item){
+                this.currentindex=index
+                this.$emit('li-click',item)
+            }
+        }
+    }
+
+    var app = new Vue({
+        el: "#app",
+        data: {
+            message: "assas",
+            movies:["上海滩","七龙珠","火影忍者"]
+        },
+        components: {
+            cpn:cpn
+        },
+        methods:{
+            liclick(item){
+                console.log(item,'weweew');
+            }
+        }
+    })
+</script>
+</body>
+</html>

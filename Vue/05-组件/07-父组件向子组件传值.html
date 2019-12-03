@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../vue.js" type="text/javascript"></script>
+<div id="app">
+    <cpn :cmsg="message" :cmovies="movies"></cpn>
+</div>
+
+<template id="cpn">
+    <div>
+        <h1>我是子组件标题</h1>
+        <p>我是子组件内容</p>
+        <p>父组件的值是:{{cmsg}}</p>
+        <ul>
+            <li v-for="item in cmovies">{{item}}</li>
+        </ul>
+    </div>
+</template>
+
+<script type="text/javascript">
+
+    const cpn={
+        template:"#cpn",
+        props:{
+            cmsg:{
+                type:String,
+                default:""
+            },
+            cmovies:{
+                type: Array,
+                default(){
+                    return []
+                },
+                required:true
+            }
+        }
+    }
+
+    var app = new Vue({
+        el: "#app",
+        data: {
+            message: "assas",
+            movies:["孩子王","七龙珠","上海滩"]
+        },
+        components:{
+            cpn
+        }
+    })
+</script>
+</body>
+</html>
